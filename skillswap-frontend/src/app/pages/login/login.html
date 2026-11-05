@@ -1,0 +1,156 @@
+<div class="auth-page">
+
+  <div class="auth-layout">
+
+    <!-- LEFT SECTION -->
+
+    <section class="auth-left">
+
+      <div class="auth-brand">
+        <span class="auth-brand-icon">🔄</span>
+        SkillSwap
+      </div>
+
+      <div class="auth-badge">
+        🎓 Learn • Share • Grow
+      </div>
+
+      <h1>
+        Welcome Back to
+        <span>SkillSwap!</span>
+      </h1>
+
+      <p class="auth-description">
+        Connect with talented students, share your knowledge,
+        and discover new skills together.
+      </p>
+
+      <div class="auth-study-grid">
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">☕</span>
+          <h4>Java</h4>
+          <p>Code Better</p>
+        </div>
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">💻</span>
+          <h4>DSA</h4>
+          <p>Think Logically</p>
+        </div>
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">🗄️</span>
+          <h4>SQL</h4>
+          <p>Query Smart</p>
+        </div>
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">🌐</span>
+          <h4>Web Dev</h4>
+          <p>Build More</p>
+        </div>
+
+      </div>
+
+      <div class="auth-quote">
+
+        <div class="auth-quote-icon">❝</div>
+
+        <div>
+          <p>
+            The beautiful thing about learning is that
+            nobody can take it away from you.
+          </p>
+
+          <span>— B.B. King</span>
+        </div>
+
+      </div>
+
+      <div class="auth-decoration">
+        📚 🎓 ✏️
+      </div>
+
+    </section>
+
+
+    <!-- RIGHT LOGIN CARD -->
+
+    <section class="auth-card">
+
+      <div class="auth-card-logo">
+        🔄 Skill<span>Swap</span>
+      </div>
+
+      <h2>Login to Your Account</h2>
+
+      <p class="auth-card-subtitle">
+        Continue your learning journey
+      </p>
+
+      <form #loginForm="ngForm"
+            (ngSubmit)="loginStudent(loginForm)">
+
+        <div class="auth-form-group">
+
+          <label for="email">✉️ &nbsp; Email Address</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="Enter your registered email"
+            required
+            email
+          />
+
+        </div>
+
+        <div class="auth-form-group">
+
+          <label for="password">🔒 &nbsp; Password</label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Enter your password"
+            required
+          />
+
+        </div>
+
+        <button
+          type="submit"
+          class="auth-submit-button"
+          [disabled]="loginForm.invalid || loading">
+
+          {{ loading ? 'Logging in...' : 'Login  →' }}
+
+        </button>
+
+        <p class="auth-success" *ngIf="message">
+          ✅ {{ message }}
+        </p>
+
+        <p class="auth-error" *ngIf="errorMessage">
+          ⚠️ {{ errorMessage }}
+        </p>
+
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <p class="auth-footer">
+        Don't have an account?
+        <a routerLink="/register">Create Account</a>
+      </p>
+
+    </section>
+
+  </div>
+
+</div>

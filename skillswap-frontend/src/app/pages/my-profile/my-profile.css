@@ -1,0 +1,345 @@
+/* =========================================
+   SKILLSWAP - MY PROFILE
+   MIDNIGHT PURPLE + DEEP NAVY THEME
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.profile-container {
+  min-height: 100vh;
+  padding: 45px 20px;
+  background:
+    radial-gradient(circle at 10% 5%, rgba(108, 76, 241, 0.14), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08), transparent 30%),
+    #080b18;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #f1f0ff;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.profile-header {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-header h1 {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.profile-header p {
+  margin: 0;
+  color: #aaaac5;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Back Button */
+
+.back-btn {
+  text-decoration: none;
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  padding: 12px 19px;
+  border-radius: 11px;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(108, 76, 241, 0.25);
+}
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.profile-card {
+  max-width: 900px;
+  margin: auto;
+  padding: 38px;
+  background: linear-gradient(
+    145deg,
+    rgba(25, 29, 58, 0.98),
+    rgba(15, 19, 40, 0.98)
+  );
+  border-radius: 22px;
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.6s ease;
+}
+
+/* =========================================
+   AVATAR
+========================================= */
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #8b5cf6, #4f46e5);
+  color: white;
+  font-size: 36px;
+  font-weight: 800;
+  box-shadow: 0 10px 25px rgba(108, 76, 241, 0.3);
+}
+
+.profile-card h2 {
+  margin: 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.email {
+  margin: 9px 0 35px;
+  text-align: center;
+  color: #aaaac5;
+  font-size: 14px;
+}
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Labels */
+
+.form-group label {
+  margin-bottom: 10px;
+  color: #d9d5f5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Inputs and Textarea */
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: #0c1023;
+  color: #ffffff;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 11px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #777895;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+  background: #111630;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.7;
+}
+
+.form-group small {
+  margin-top: 9px;
+  color: #9292b1;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   SAVE BUTTON
+========================================= */
+
+.save-btn {
+  display: block;
+  width: 100%;
+  margin-top: 32px;
+  padding: 16px;
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #8b5cf6, #5b4be8, #4f46e5);
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 7px 20px rgba(108, 76, 241, 0.2);
+}
+
+.save-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(108, 76, 241, 0.35);
+}
+
+.save-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =========================================
+   SUCCESS AND ERROR MESSAGES
+========================================= */
+
+.message {
+  margin-top: 22px;
+  padding: 15px 17px;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.success {
+  background: rgba(34, 197, 94, 0.12);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.error {
+  background: rgba(244, 63, 94, 0.12);
+  color: #fda4af;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+/* =========================================
+   LOADING / STATUS CARD
+========================================= */
+
+.status-card {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 30px;
+  background: linear-gradient(
+    145deg,
+    rgba(25, 29, 58, 0.95),
+    rgba(15, 19, 40, 0.98)
+  );
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 15px;
+  text-align: center;
+  color: #c4b5fd;
+  font-size: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 650px) {
+  .profile-container {
+    padding: 28px 15px;
+  }
+
+  .profile-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profile-header h1 {
+    font-size: 27px;
+  }
+
+  .profile-card {
+    padding: 27px 19px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 21px;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .avatar {
+    width: 75px;
+    height: 75px;
+    font-size: 31px;
+  }
+}
+
+@media (max-width: 400px) {
+  .profile-header h1 {
+    font-size: 24px;
+  }
+
+  .profile-card {
+    padding: 23px 15px;
+  }
+
+  .profile-card h2 {
+    font-size: 21px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 13px;
+  }
+}

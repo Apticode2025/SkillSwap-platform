@@ -1,0 +1,298 @@
+<div class="auth-page">
+
+  <div class="auth-layout">
+
+    <!-- LEFT SECTION -->
+
+    <section class="auth-left">
+
+      <div class="auth-brand">
+        <span class="auth-brand-icon">🔄</span>
+        SkillSwap
+      </div>
+
+      <div class="auth-badge">
+        🎓 Start Your Learning Journey
+      </div>
+
+      <h1>
+        Learn New Skills.
+        <span>Grow Together.</span>
+      </h1>
+
+      <p class="auth-description">
+        Join a community of passionate students.
+        Share your knowledge, exchange skills,
+        and create new learning opportunities.
+      </p>
+
+      <div class="auth-study-grid">
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">☕</span>
+          <h4>Java</h4>
+          <p>Code Better</p>
+        </div>
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">💻</span>
+          <h4>DSA</h4>
+          <p>Think Logically</p>
+        </div>
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">🗄️</span>
+          <h4>SQL</h4>
+          <p>Query Smart</p>
+        </div>
+
+        <div class="auth-study-card">
+          <span class="auth-study-icon">🌐</span>
+          <h4>Web Dev</h4>
+          <p>Build More</p>
+        </div>
+
+      </div>
+
+      <div class="auth-quote">
+
+        <div class="auth-quote-icon">❝</div>
+
+        <div>
+          <p>
+            An investment in knowledge pays the best interest.
+          </p>
+
+          <span>— Benjamin Franklin</span>
+        </div>
+
+      </div>
+
+      <div class="auth-decoration">
+        📚 🎓 ✏️
+      </div>
+
+    </section>
+
+
+    <!-- RIGHT REGISTER CARD -->
+
+    <section class="auth-card register-auth-card">
+
+      <div class="auth-card-logo">
+        🔄 Skill<span>Swap</span>
+      </div>
+
+      <h2>Create Your Account</h2>
+
+      <p class="auth-card-subtitle">
+        Share your skills. Learn something new.
+      </p>
+
+      <form #registerForm="ngForm"
+            (ngSubmit)="registerStudent(registerForm)">
+
+        <!-- FULL NAME -->
+
+        <div class="auth-form-group">
+
+          <label for="name">Full Name</label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="student.name"
+            #nameField="ngModel"
+            placeholder="Enter your full name"
+            required
+          />
+
+          <small
+            class="auth-error"
+            *ngIf="nameField.invalid && nameField.touched">
+
+            Please enter your full name.
+
+          </small>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="auth-form-group">
+
+          <label for="email">Email Address</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="student.email"
+            #emailField="ngModel"
+            placeholder="Enter your email"
+            required
+            email
+          />
+
+          <small
+            class="auth-error"
+            *ngIf="emailField.invalid && emailField.touched">
+
+            Please enter a valid email address.
+
+          </small>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="auth-form-group">
+
+          <label for="password">Password</label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="student.password"
+            #passwordField="ngModel"
+            placeholder="Create a password (minimum 8 characters)"
+            required
+            minlength="8"
+          />
+
+          <small
+            class="auth-error"
+            *ngIf="passwordField.invalid && passwordField.touched">
+
+            Password must contain at least 8 characters.
+
+          </small>
+
+        </div>
+
+
+        <!-- DEPARTMENT -->
+
+        <div class="auth-form-group">
+
+          <label for="department">Department</label>
+
+          <select
+            id="department"
+            name="department"
+            [(ngModel)]="student.department"
+            #departmentField="ngModel"
+            required>
+
+            <option value="" disabled>Select your department</option>
+            <option value="MCA">MCA</option>
+            <option value="BCA">BCA</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="M.Tech">M.Tech</option>
+            <option value="MBA">MBA</option>
+            <option value="BBA">BBA</option>
+            <option value="B.Sc">B.Sc</option>
+            <option value="M.Sc">M.Sc</option>
+            <option value="Other">Other</option>
+
+          </select>
+
+          <small
+            class="auth-error"
+            *ngIf="departmentField.invalid && departmentField.touched">
+
+            Please select your department.
+
+          </small>
+
+        </div>
+
+
+        <!-- COLLEGE -->
+
+        <div class="auth-form-group">
+
+          <label for="college">College Name</label>
+
+          <select
+            id="college"
+            name="college"
+            [(ngModel)]="student.college"
+            #collegeField="ngModel"
+            required>
+
+            <option value="" disabled>Select your college</option>
+
+            <option value="Centurion University of Technology and Management (CUTM)">
+              Centurion University of Technology and Management (CUTM)
+            </option>
+
+            <option value="Other">Other</option>
+
+          </select>
+
+          <small
+            class="auth-error"
+            *ngIf="collegeField.invalid && collegeField.touched">
+
+            Please select your college.
+
+          </small>
+
+        </div>
+
+
+        <!-- SUBMIT BUTTON -->
+
+        <button
+          type="submit"
+          class="auth-submit-button"
+          [disabled]="registerForm.invalid || loading">
+
+          {{ loading ? 'Creating Account...' : 'Create Account →' }}
+
+        </button>
+
+
+        <!-- SUCCESS MESSAGE -->
+
+        <p class="auth-success" *ngIf="message">
+          ✅ {{ message }}
+        </p>
+
+
+        <!-- ERROR MESSAGE -->
+
+        <p class="auth-error" *ngIf="errorMessage">
+          ⚠️ {{ errorMessage }}
+        </p>
+
+
+        <!-- FORM VALIDATION -->
+
+        <p
+          class="auth-error"
+          *ngIf="registerForm.invalid && registerForm.touched">
+
+          Please fill in all required fields correctly.
+
+        </p>
+
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <p class="auth-footer">
+  Already have an account?
+  <a href="/login">Login</a>
+</p>
+
+    </section>
+
+  </div>
+
+</div>

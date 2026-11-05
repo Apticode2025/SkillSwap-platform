@@ -1,0 +1,119 @@
+<div class="directory-container">
+
+  <header class="page-header">
+    <div>
+      <h1>🔍 Find Students</h1>
+      <p>Discover students, exchange knowledge, and grow together.</p>
+    </div>
+
+    <button class="back-btn" (click)="goToDashboard()">
+      ← Dashboard
+    </button>
+  </header>
+
+  <section class="search-section">
+    <h2>Find Your Learning Partner 🤝</h2>
+
+    <p>Search by name, department, college, or skill.</p>
+
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (ngModelChange)="searchStudents()"
+      placeholder="Try Java, Angular, MCA, or a student's name..."
+      aria-label="Search students"
+    />
+
+    <div class="student-count" *ngIf="!loading && !errorMessage">
+      {{ filteredStudents.length }}
+      student{{ filteredStudents.length === 1 ? '' : 's' }} found
+    </div>
+  </section>
+
+  <div class="status-message" *ngIf="loading">
+    Loading students...
+  </div>
+
+  <div class="status-message error" *ngIf="errorMessage">
+    {{ errorMessage }}
+    <button (click)="loadStudents()">Try Again</button>
+  </div>
+
+  <div
+    class="empty-state"
+    *ngIf="!loading && !errorMessage && filteredStudents.length === 0"
+  >
+    <div class="empty-icon">🎓</div>
+    <h2>No students found</h2>
+    <p>Try another name, department, or skill.</p>
+  </div>
+
+  <section
+    class="students-grid"
+    *ngIf="!loading && !errorMessage && filteredStudents.length > 0"
+  >
+
+    <article
+      class="student-card"
+      *ngFor="let student of filteredStudents"
+    >
+
+      <div class="student-top">
+        <div class="avatar">
+          {{ student.name.charAt(0).toUpperCase() }}
+        </div>
+
+        <div class="student-info">
+          <h3>{{ student.name }}</h3>
+          <p>{{ student.department || 'Department not specified' }}</p>
+        </div>
+      </div>
+
+      <div class="college">
+        🎓 {{ student.college || 'College not specified' }}
+      </div>
+
+      <div class="skills-block">
+        <h4>💡 Skills to Teach</h4>
+
+        <div class="skill-tags" *ngIf="student.skillsToTeach">
+          <span
+            class="skill-tag"
+            *ngFor="let skill of student.skillsToTeach.split(',')"
+          >
+            {{ skill.trim() }}
+          </span>
+        </div>
+
+        <p *ngIf="!student.skillsToTeach" class="not-specified">
+          No teaching skills added yet.
+        </p>
+      </div>
+
+      <div class="skills-block">
+        <h4>📚 Skills to Learn</h4>
+
+        <div class="skill-tags" *ngIf="student.skillsToLearn">
+          <span
+            class="learn-tag"
+            *ngFor="let skill of student.skillsToLearn.split(',')"
+          >
+            {{ skill.trim() }}
+          </span>
+        </div>
+
+        <p *ngIf="!student.skillsToLearn" class="not-specified">
+          No learning goals added yet.
+        </p>
+      </div>
+
+      <div class="student-footer">
+        <span>SkillSwap Member</span>
+        <span class="status-dot">● Active</span>
+      </div>
+
+    </article>
+
+  </section>
+
+</div>

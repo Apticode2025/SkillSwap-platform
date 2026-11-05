@@ -1,0 +1,166 @@
+<div class="dashboard-container" *ngIf="student">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="brand">🔄 SkillSwap</div>
+
+    <div class="nav-links">
+      <button
+  type="button"
+  class="notification-btn"
+  (click)="openNotifications()"
+  aria-label="View notifications">
+
+  🔔
+
+  <span
+    class="notification-count"
+    *ngIf="unreadCount > 0">
+    {{ unreadCount }}
+  </span>
+
+</button>
+      <a routerLink="/dashboard" routerLinkActive="active">
+        Dashboard
+      </a>
+
+      <a routerLink="/my-profile" routerLinkActive="active">
+        My Profile
+      </a>
+
+      <a routerLink="/find-students" routerLinkActive="active">
+        Find Students
+      </a>
+
+      <button type="button" class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard Content -->
+  <main class="dashboard-content">
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+      <div>
+        <p class="eyebrow">STUDENT DASHBOARD</p>
+
+        <h1>
+          Welcome back, {{ student.name }}! 👋
+        </h1>
+
+        <p class="welcome-text">
+          Share what you know. Discover what you can learn.
+        </p>
+      </div>
+    </section>
+
+    <!-- Student Profile Summary -->
+    <section class="profile-summary">
+
+      <div class="avatar">
+        {{ student.name.charAt(0).toUpperCase() }}
+      </div>
+
+      <div class="profile-info">
+        <h2>{{ student.name }}</h2>
+        <p>{{ student.department }}</p>
+        <p>{{ student.college }}</p>
+        <p>{{ student.email }}</p>
+      </div>
+
+    </section>
+
+    <!-- Features Heading -->
+    <h2 class="section-heading">
+      Explore SkillSwap
+    </h2>
+
+    <!-- Feature Cards -->
+    <section class="feature-grid">
+
+      <!-- My Profile -->
+      <article class="feature-card">
+        <div class="feature-icon">👤</div>
+
+        <h3>My Profile</h3>
+
+        <p>
+          Manage your student information and skills.
+        </p>
+
+        <button
+          type="button"
+          routerLink="/my-profile">
+          View Profile →
+        </button>
+      </article>
+
+      <!-- Find Students -->
+      <article class="feature-card">
+        <div class="feature-icon">🔍</div>
+
+        <h3>Find Students</h3>
+
+        <p>
+          Discover students who can teach you new skills.
+        </p>
+
+        <button
+          type="button"
+          routerLink="/find-students">
+          Find Students →
+        </button>
+      </article>
+
+      <!-- My Skills -->
+      <article class="feature-card">
+        <div class="feature-icon">🎯</div>
+
+        <h3>My Skills</h3>
+
+        <p>
+          Explore skills you can teach and want to learn.
+        </p>
+
+        <button
+          type="button"
+          routerLink="/my-profile">
+          Manage Skills →
+        </button>
+      </article>
+
+      <!-- My Sessions -->
+      <article class="feature-card">
+        <div class="feature-icon">📅</div>
+
+        <h3>My Sessions</h3>
+
+        <p>
+          Manage your skill-exchange sessions.
+        </p>
+
+        <button
+          type="button"
+          routerLink="/sessions">
+          View Sessions →
+        </button>
+      </article>
+
+    </section>
+
+    <!-- Bottom Banner -->
+    <section class="bottom-banner">
+      <h2>
+        Every student has something valuable to share.
+      </h2>
+
+      <p>
+        Teach a skill, learn a skill, and grow together.
+      </p>
+    </section>
+
+  </main>
+
+</div>

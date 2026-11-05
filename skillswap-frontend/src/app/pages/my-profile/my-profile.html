@@ -1,0 +1,104 @@
+<div class="profile-container">
+
+  <!-- Header -->
+  <header class="profile-header">
+    <div>
+      <h1>👤 My Profile</h1>
+      <p>Manage your information and share your skills with others.</p>
+    </div>
+
+    <a routerLink="/dashboard" class="back-btn">← Dashboard</a>
+  </header>
+
+  <!-- Loading -->
+  <div class="status-card" *ngIf="loading">
+    Loading your profile...
+  </div>
+
+  <!-- Profile Form -->
+  <form
+    *ngIf="!loading && student.id"
+    class="profile-card"
+    (ngSubmit)="saveProfile()"
+    #profileForm="ngForm"
+  >
+
+    <div class="avatar">
+      {{ student.name.charAt(0).toUpperCase() }}
+    </div>
+
+    <h2>{{ student.name }}</h2>
+    <p class="email">{{ student.email }}</p>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <input
+          id="department"
+          type="text"
+          name="department"
+          [(ngModel)]="student.department"
+          placeholder="e.g. MCA"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="college">College</label>
+        <input
+          id="college"
+          type="text"
+          name="college"
+          [(ngModel)]="student.college"
+          placeholder="Enter your college name"
+          required
+        />
+      </div>
+
+      <div class="form-group full-width">
+        <label for="skillsToTeach">Skills I Can Teach 🎯</label>
+        <textarea
+          id="skillsToTeach"
+          name="skillsToTeach"
+          [(ngModel)]="student.skillsToTeach"
+          placeholder="e.g. Java, SQL, HTML, CSS"
+          rows="3"
+        ></textarea>
+        <small>Share the skills you can teach other students.</small>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="skillsToLearn">Skills I Want to Learn 📚</label>
+        <textarea
+          id="skillsToLearn"
+          name="skillsToLearn"
+          [(ngModel)]="student.skillsToLearn"
+          placeholder="e.g. Angular, Spring Boot, Python"
+          rows="3"
+        ></textarea>
+        <small>Tell others which skills you want to learn.</small>
+      </div>
+
+    </div>
+
+    <div class="message success" *ngIf="message">
+      ✅ {{ message }}
+    </div>
+
+    <div class="message error" *ngIf="errorMessage">
+      ⚠️ {{ errorMessage }}
+    </div>
+
+    <button type="submit" class="save-btn" [disabled]="saving || profileForm.invalid">
+      {{ saving ? 'Saving...' : '💾 Save Profile' }}
+    </button>
+
+  </form>
+
+  <!-- Error when profile cannot be loaded -->
+  <div class="status-card error" *ngIf="!loading && !student.id">
+    {{ errorMessage || 'Student profile could not be loaded.' }}
+  </div>
+
+</div>

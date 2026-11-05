@@ -1,0 +1,718 @@
+/* =========================================
+   SKILLSWAP — MY SESSIONS PAGE
+   MIDNIGHT PURPLE DESIGN
+========================================= */
+
+/* MAIN PAGE */
+
+.sessions-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top left, rgba(91, 53, 184, 0.16), transparent 40%),
+    radial-gradient(ellipse at bottom right, rgba(37, 99, 235, 0.10), transparent 40%),
+    #080d1b;
+  color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+}
+
+/* NAVIGATION BAR */
+
+.sessions-page .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 17px 6%;
+  background: rgba(13, 20, 37, 0.96);
+  border-bottom: 1px solid #26344e;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(15px);
+}
+
+.sessions-page .logo {
+  color: #a78bfa;
+  font-size: 26px;
+  font-weight: 800;
+  white-space: nowrap;
+  letter-spacing: -1px;
+}
+
+.sessions-page .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.sessions-page .nav-links a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.sessions-page .nav-links a:hover,
+.sessions-page .nav-links a.active {
+  color: #a78bfa;
+}
+
+/* LOGOUT BUTTON */
+
+.sessions-page .logout-btn {
+  padding: 10px 18px;
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  border-radius: 9px;
+  background: rgba(251, 113, 133, 0.12);
+  color: #fda4af;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sessions-page .logout-btn:hover {
+  background: #fb7185;
+  color: white;
+}
+
+/* PAGE HEADER */
+
+.sessions-page .page-header {
+  position: relative;
+  overflow: hidden;
+  padding: 58px 20px 48px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(192, 132, 252, 0.25), transparent 30%),
+    linear-gradient(120deg, #24164e, #4c2695, #312e81);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.25);
+}
+
+.sessions-page .page-header::before {
+  content: "LEARN • SHARE • GROW";
+  display: block;
+  color: #c4b5fd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+.sessions-page .page-header h1 {
+  margin: 0 0 13px;
+  color: #ffffff;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.sessions-page .page-header p {
+  margin: 0 auto;
+  max-width: 650px;
+  color: #ddd6fe;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* MAIN CONTAINER */
+
+.sessions-page .container {
+  width: min(1120px, 90%);
+  margin: 45px auto;
+}
+
+/* REQUEST CARD */
+
+.sessions-page .request-card {
+  position: relative;
+  padding: 34px;
+  margin-bottom: 55px;
+  background: linear-gradient(145deg, #18243b, #121c30);
+  border: 1px solid #34435e;
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.sessions-page .request-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #8b5cf6, #6366f1, #22d3ee);
+}
+
+.sessions-page .request-card h2 {
+  margin: 0 0 10px;
+  color: #f8fafc;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.sessions-page .section-description {
+  margin: 0;
+  color: #a1aec4;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* FORM GRID */
+
+.sessions-page .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+  margin: 32px 0;
+}
+
+/* FORM GROUP */
+
+.sessions-page .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sessions-page .form-group label {
+  color: #dbe4f0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* INPUTS */
+
+.sessions-page .form-group input,
+.sessions-page .form-group textarea,
+.sessions-page .form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 15px;
+  background: #0b1425;
+  color: #f1f5f9;
+  border: 1px solid #34435e;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.sessions-page .form-group input::placeholder,
+.sessions-page .form-group textarea::placeholder {
+  color: #8492aa;
+}
+
+.sessions-page .form-group input:focus,
+.sessions-page .form-group textarea:focus,
+.sessions-page .form-group select:focus {
+  background: #101b30;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.13);
+}
+
+.sessions-page .form-group select option {
+  background: #151f35;
+  color: white;
+}
+
+.sessions-page .form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* BUTTON COMMON STYLE */
+
+.sessions-page .primary-btn,
+.sessions-page .refresh-btn,
+.sessions-page .back-btn,
+.sessions-page .accept-btn,
+.sessions-page .reject-btn,
+.sessions-page .complete-btn,
+.sessions-page .cancel-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* PRIMARY BUTTON */
+
+.sessions-page .primary-btn {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #ffffff;
+  padding: 14px 24px;
+  font-size: 14px;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
+}
+
+.sessions-page .primary-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+  transform: translateY(-3px);
+}
+
+.sessions-page .primary-btn:disabled,
+.sessions-page .refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ALERT MESSAGES */
+
+.sessions-page .alert {
+  margin-bottom: 22px;
+  padding: 15px 18px;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sessions-page .alert.success {
+  background: rgba(34, 197, 94, 0.12);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.sessions-page .alert.error {
+  background: rgba(251, 113, 133, 0.12);
+  color: #fda4af;
+  border: 1px solid rgba(251, 113, 133, 0.3);
+}
+
+/* SESSION LIST SECTION */
+
+.sessions-page .session-list-section {
+  margin-top: 35px;
+}
+
+.sessions-page .section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.sessions-page .section-heading h2 {
+  margin: 0 0 8px;
+  color: #f1f5f9;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.sessions-page .section-heading p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* REFRESH BUTTON */
+
+.sessions-page .refresh-btn {
+  background: rgba(139, 92, 246, 0.15);
+  color: #c4b5fd;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  white-space: nowrap;
+}
+
+.sessions-page .refresh-btn:hover:not(:disabled) {
+  background: #8b5cf6;
+  color: white;
+}
+
+/* SESSION GRID */
+
+.sessions-page .session-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* SESSION CARD */
+
+.sessions-page .session-card {
+  position: relative;
+  padding: 25px;
+  background: linear-gradient(145deg, #19253d, #111c30);
+  border: 1px solid #2c3b56;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sessions-page .session-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, #8b5cf6, #22d3ee);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sessions-page .session-card:hover {
+  transform: translateY(-5px);
+  border-color: #7253bd;
+  box-shadow: 0 15px 35px rgba(91, 53, 184, 0.16);
+}
+
+.sessions-page .session-card:hover::before {
+  opacity: 1;
+}
+
+/* CARD HEADER */
+
+.sessions-page .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* SESSION TYPE */
+
+.sessions-page .session-type {
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.14);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 7px;
+  padding: 7px 11px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+/* STATUS BADGES */
+
+.sessions-page .status-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.sessions-page .status-badge.pending {
+  background: rgba(251, 191, 36, 0.14);
+  color: #fcd34d;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.sessions-page .status-badge.accepted {
+  background: rgba(59, 130, 246, 0.14);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.sessions-page .status-badge.rejected {
+  background: rgba(251, 113, 133, 0.14);
+  color: #fda4af;
+  border: 1px solid rgba(251, 113, 133, 0.25);
+}
+
+.sessions-page .status-badge.completed {
+  background: rgba(34, 197, 94, 0.14);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.sessions-page .status-badge.cancelled {
+  background: rgba(148, 163, 184, 0.14);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* SKILL NAME */
+
+.sessions-page .session-card h3 {
+  margin: 0 0 18px;
+  color: #c4b5fd;
+  font-size: 23px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+/* SESSION DETAILS */
+
+.sessions-page .session-details {
+  padding: 17px;
+  border-radius: 12px;
+  background: rgba(8, 13, 27, 0.65);
+  border: 1px solid #293750;
+}
+
+.sessions-page .session-details p {
+  margin: 0 0 12px;
+  color: #aebbd0;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.sessions-page .session-details p:last-child {
+  margin-bottom: 0;
+}
+
+.sessions-page .session-details strong {
+  color: #e2e8f0;
+}
+
+/* ACTION BUTTONS */
+
+.sessions-page .action-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* ACCEPT */
+
+.sessions-page .accept-btn {
+  background: rgba(34, 197, 94, 0.15);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.sessions-page .accept-btn:hover {
+  background: #16a34a;
+  color: white;
+}
+
+/* REJECT */
+
+.sessions-page .reject-btn {
+  background: rgba(251, 113, 133, 0.14);
+  color: #fda4af;
+  border: 1px solid rgba(251, 113, 133, 0.3);
+}
+
+.sessions-page .reject-btn:hover {
+  background: #e11d48;
+  color: white;
+}
+
+/* COMPLETE */
+
+.sessions-page .complete-btn {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: white;
+}
+
+.sessions-page .complete-btn:hover {
+  background: #6d28d9;
+}
+
+/* CANCEL */
+
+.sessions-page .cancel-btn {
+  background: rgba(148, 163, 184, 0.12);
+  color: #cbd5e1;
+  border: 1px solid #475569;
+}
+
+.sessions-page .cancel-btn:hover {
+  background: #475569;
+  color: white;
+}
+
+/* COMPLETED MESSAGE */
+
+.sessions-page .session-completed,
+.sessions-page .session-rejected,
+.sessions-page .session-cancelled {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.sessions-page .session-completed {
+  background: rgba(34, 197, 94, 0.12);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.sessions-page .session-rejected {
+  background: rgba(251, 113, 133, 0.12);
+  color: #fda4af;
+  border: 1px solid rgba(251, 113, 133, 0.2);
+}
+
+.sessions-page .session-cancelled {
+  background: rgba(148, 163, 184, 0.12);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* LOADING */
+
+.sessions-page .loading-box {
+  padding: 35px;
+  text-align: center;
+  color: #c4b5fd;
+  background: #151f35;
+  border: 1px solid #34435e;
+  border-radius: 15px;
+}
+
+/* EMPTY STATE */
+
+.sessions-page .empty-state {
+  padding: 55px 25px;
+  text-align: center;
+  background: linear-gradient(145deg, #18243b, #111c30);
+  border: 1px solid #34435e;
+  border-radius: 18px;
+}
+
+.sessions-page .empty-icon {
+  margin-bottom: 15px;
+  font-size: 55px;
+}
+
+.sessions-page .empty-state h3 {
+  margin: 0 0 10px;
+  color: #e9d5ff;
+  font-size: 23px;
+}
+
+.sessions-page .empty-state p {
+  max-width: 450px;
+  margin: 0 auto;
+  color: #a1aec4;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* BACK BUTTON */
+
+.sessions-page .back-section {
+  margin: 45px 0;
+  text-align: center;
+}
+
+.sessions-page .back-btn {
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  color: #c4b5fd;
+  padding: 13px 24px;
+}
+
+.sessions-page .back-btn:hover {
+  background: #8b5cf6;
+  color: white;
+  box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* FOOTER */
+
+.sessions-page .footer {
+  padding: 25px 15px;
+  background: #0d1425;
+  border-top: 1px solid #26344e;
+  text-align: center;
+}
+
+.sessions-page .footer p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .sessions-page .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sessions-page .nav-links {
+    gap: 15px;
+  }
+
+  .sessions-page .session-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .sessions-page .navbar {
+    padding: 16px 5%;
+  }
+
+  .sessions-page .nav-links {
+    gap: 12px;
+  }
+
+  .sessions-page .nav-links a {
+    font-size: 12px;
+  }
+
+  .sessions-page .page-header {
+    padding: 40px 15px;
+  }
+
+  .sessions-page .page-header h1 {
+    font-size: 28px;
+  }
+
+  .sessions-page .page-header p {
+    font-size: 13px;
+  }
+
+  .sessions-page .container {
+    width: 92%;
+    margin: 25px auto;
+  }
+
+  .sessions-page .request-card {
+    padding: 23px 18px;
+  }
+
+  .sessions-page .request-card h2 {
+    font-size: 21px;
+  }
+
+  .sessions-page .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sessions-page .section-heading {
+    align-items: flex-start;
+  }
+
+  .sessions-page .section-heading h2 {
+    font-size: 21px;
+  }
+
+  .sessions-page .session-card {
+    padding: 19px;
+  }
+
+  .sessions-page .action-buttons button {
+    flex: 1;
+  }
+}
