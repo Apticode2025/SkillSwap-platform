@@ -1,0 +1,437 @@
+<div class="sessions-page"> 
+ 
+  <!-- Navigation Bar --> 
+  <nav class="navbar"> 
+ 
+    <div class="logo">🎓 SkillSwap</div> 
+ 
+    <div class="nav-links"> 
+ 
+      <a routerLink="/dashboard">Dashboard</a> 
+ 
+      <a routerLink="/my-profile">My Profile</a> 
+ 
+      <a routerLink="/find-students">Find Students</a> 
+ 
+      <a routerLink="/sessions" class="active"> 
+        My Sessions 
+      </a> 
+ 
+      <button 
+        type="button" 
+        class="logout-btn" 
+        (click)="logout()"> 
+        Logout 
+      </button> 
+ 
+    </div> 
+ 
+  </nav> 
+ 
+  <!-- Page Header --> 
+  <header class="page-header"> 
+ 
+    <h1>My Skill Sessions 🤝</h1> 
+ 
+    <p> 
+      Learn something new, share your knowledge, 
+      and grow together! 
+    </p> 
+ 
+  </header> 
+ 
+  <main class="container"> 
+ 
+    <!-- Success Message --> 
+    <div 
+      class="alert success" 
+      *ngIf="successMessage"> 
+ 
+      {{ successMessage }} 
+ 
+    </div> 
+ 
+    <!-- Error Message --> 
+    <div 
+      class="alert error" 
+      *ngIf="errorMessage"> 
+ 
+      {{ errorMessage }} 
+ 
+    </div> 
+ 
+    <!-- Request Session Form --> 
+    <section class="request-card"> 
+ 
+      <h2>✨ Request a Skill Session</h2> 
+ 
+      <p class="section-description"> 
+        Connect with another student and learn a skill together. 
+      </p> 
+ 
+      <form 
+        (ngSubmit)="createSession()" 
+        #sessionForm="ngForm"> 
+ 
+        <div class="form-grid"> 
+ 
+          <!-- Select Student --> 
+          <div class="form-group"> 
+ 
+            <label for="receiverId"> 
+              Select Student * 
+            </label> 
+ 
+            <select 
+              id="receiverId" 
+              name="receiverId" 
+              [(ngModel)]="receiverId" 
+              required> 
+ 
+              <option 
+                [ngValue]="null" 
+                disabled> 
+                Choose a student 
+              </option> 
+ 
+              <option 
+                *ngFor="let student of students" 
+                [ngValue]="student.id" 
+                [disabled]="isCurrentStudent(student.id)"> 
+ 
+                {{ student.name }} — {{ student.department }} 
+                {{ 
+                  isCurrentStudent(student.id) 
+                    ? '(You)' 
+                    : '' 
+                }} 
+ 
+              </option> 
+ 
+            </select> 
+ 
+          </div> 
+ 
+          <!-- Skill Name --> 
+          <div class="form-group"> 
+ 
+            <label for="skillName"> 
+              Skill to Learn * 
+            </label> 
+ 
+            <input 
+              id="skillName" 
+              type="text" 
+              name="skillName" 
+              [(ngModel)]="skillName" 
+              required 
+              placeholder="Example: Java, Angular, SQL"> 
+ 
+          </div> 
+ 
+          <!-- Date and Time --> 
+          <div class="form-group"> 
+ 
+            <label for="sessionDateTime"> 
+              Session Date & Time * 
+            </label> 
+ 
+            <input 
+              id="sessionDateTime" 
+              type="datetime-local" 
+              name="sessionDateTime" 
+              [(ngModel)]="sessionDateTime" 
+              [min]="minDateTime" 
+              required> 
+ 
+          </div> 
+ 
+          <!-- Message --> 
+          <div class="form-group"> 
+ 
+            <label for="message"> 
+              Message 
+            </label> 
+ 
+            <textarea 
+              id="message" 
+              name="message" 
+              [(ngModel)]="message" 
+              rows="3" 
+              placeholder="Write a message to the student"> 
+            </textarea> 
+ 
+          </div> 
+ 
+        </div> 
+ 
+        <!-- Submit Button --> 
+        <button 
+          type="submit" 
+          class="primary-btn" 
+          [disabled]=" 
+            submitting || 
+            sessionForm.invalid 
+          "> 
+ 
+          {{ 
+            submitting 
+              ? 'Sending Request...' 
+              : 'Send Session Request 🚀' 
+          }} 
+ 
+        </button> 
+ 
+      </form> 
+ 
+    </section> 
+ 
+    <!-- Sessions List --> 
+    <section class="session-list-section"> 
+ 
+      <!-- Section Heading --> 
+      <div class="section-heading"> 
+ 
+        <div> 
+ 
+          <h2>📚 Your Sessions</h2> 
+ 
+          <p> 
+            Track your sent and received requests. 
+          </p> 
+ 
+        </div> 
+ 
+        <button 
+          type="button" 
+          class="refresh-btn" 
+          (click)="loadSessions()" 
+          [disabled]="loading"> 
+ 
+          ↻ 
+          {{ 
+            loading 
+              ? 'Loading...' 
+              : 'Refresh' 
+          }} 
+ 
+        </button> 
+ 
+      </div> 
+ 
+      <!-- Loading State --> 
+      <div 
+        class="loading-box" 
+        *ngIf="loading"> 
+ 
+        Loading your sessions... 
+ 
+      </div> 
+ 
+      <!-- Empty State --> 
+      <div 
+        class="empty-state" 
+        *ngIf="!loading && sessions.length === 0"> 
+ 
+        <div class="empty-icon">🤝</div> 
+ 
+        <h3>No sessions yet!</h3> 
+ 
+        <p> 
+          Send your first request to start exchanging 
+          skills with other students. 
+        </p> 
+ 
+      </div> 
+ 
+      <!-- Session Cards --> 
+      <div 
+        class="session-grid" 
+        *ngIf="!loading && sessions.length > 0"> 
+ 
+        <article 
+          class="session-card" 
+          *ngFor="let session of sessions"> 
+ 
+          <!-- Card Header --> 
+          <div class="card-top"> 
+ 
+            <span class="session-type"> 
+              {{ getSessionType(session) }} 
+            </span> 
+ 
+            <span 
+              class="status-badge" 
+              [ngClass]="session.status.toLowerCase()"> 
+ 
+              {{ session.status }} 
+ 
+            </span> 
+ 
+          </div> 
+ 
+          <!-- Skill Name --> 
+          <h3>{{ session.skillName }}</h3> 
+ 
+          <!-- Session Details --> 
+          <div class="session-details"> 
+ 
+            <p> 
+              <strong>Session ID:</strong> 
+              {{ session.id }} 
+            </p> 
+ 
+            <p> 
+              <strong>Requester:</strong> 
+              {{ getStudentName(session.requesterId) }} 
+            </p> 
+ 
+            <p> 
+              <strong>Receiver:</strong> 
+              {{ getStudentName(session.receiverId) }} 
+            </p> 
+ 
+            <p> 
+              <strong>Date & Time:</strong> 
+              {{ session.sessionDateTime | date:'medium' }} 
+            </p> 
+ 
+            <p *ngIf="session.message"> 
+              <strong>Message:</strong> 
+              {{ session.message }} 
+            </p> 
+ 
+          </div> 
+ 
+          <!-- Accept and Reject Received Requests --> 
+          <div 
+            class="action-buttons" 
+            *ngIf=" 
+              isCurrentStudent(session.receiverId) && 
+              session.status === 'PENDING' 
+            "> 
+ 
+            <button 
+              type="button" 
+              class="accept-btn" 
+              (click)="acceptSession(session.id!)"> 
+ 
+              ✓ Accept 
+ 
+            </button> 
+ 
+            <button 
+              type="button" 
+              class="reject-btn" 
+              (click)="rejectSession(session.id!)"> 
+ 
+              ✕ Reject 
+ 
+            </button> 
+ 
+          </div> 
+ 
+          <!-- Complete or Cancel Accepted Sessions --> 
+          <div 
+            class="action-buttons" 
+            *ngIf="session.status === 'ACCEPTED'"> 
+ 
+            <button 
+              type="button" 
+              class="complete-btn" 
+              (click)="completeSession(session.id!)"> 
+ 
+              ✓ Mark Completed 
+ 
+            </button> 
+ 
+            <button 
+              type="button" 
+              class="cancel-btn" 
+              (click)="cancelSession(session.id!)"> 
+ 
+              Cancel Session 
+ 
+            </button> 
+ 
+          </div> 
+ 
+          <!-- Cancel Pending Request Sent by You --> 
+          <div 
+            class="action-buttons" 
+            *ngIf=" 
+              isCurrentStudent(session.requesterId) && 
+              session.status === 'PENDING' 
+            "> 
+ 
+            <button 
+              type="button" 
+              class="cancel-btn" 
+              (click)="cancelSession(session.id!)"> 
+ 
+              Cancel Request 
+ 
+            </button> 
+ 
+          </div> 
+ 
+          <!-- Completed Session Message --> 
+          <div 
+            class="session-completed" 
+            *ngIf="session.status === 'COMPLETED'"> 
+ 
+            ✓ This session has been completed successfully! 
+ 
+          </div> 
+ 
+          <!-- Rejected Session Message --> 
+          <div 
+            class="session-rejected" 
+            *ngIf="session.status === 'REJECTED'"> 
+ 
+            ✕ This session request was rejected. 
+ 
+          </div> 
+ 
+          <!-- Cancelled Session Message --> 
+          <div 
+            class="session-cancelled" 
+            *ngIf="session.status === 'CANCELLED'"> 
+ 
+            This session has been cancelled. 
+ 
+          </div> 
+ 
+        </article> 
+ 
+      </div> 
+ 
+    </section> 
+ 
+    <!-- Back to Dashboard --> 
+    <div class="back-section"> 
+ 
+      <button 
+        type="button" 
+        class="back-btn" 
+        (click)="goToDashboard()"> 
+ 
+        ← Back to Dashboard 
+ 
+      </button> 
+ 
+    </div> 
+ 
+  </main> 
+ 
+  <!-- Footer --> 
+  <footer class="footer"> 
+ 
+    <p> 
+      © 2026 SkillSwap | 
+      Share Skills. Build Connections. Grow Together. 💙 
+    </p> 
+ 
+  </footer> 
+ 
+</div>

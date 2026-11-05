@@ -1,1 +1,18 @@
 #test file
+
+# IntelliJ IDEA
+**/.idea/
+*.iml
+
+# Maven / Java build files
+**/target/
+
+# Angular / Node generated files
+**/node_modules/
+**/dist/
+**/.angular/
+
+# Environment and log files
+.env
+.env.*
+*.log

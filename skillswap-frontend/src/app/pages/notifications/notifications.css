@@ -1,0 +1,526 @@
+/* =========================================
+   SKILLSWAP - NOTIFICATIONS
+   MIDNIGHT PURPLE + DEEP NAVY THEME
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.notifications-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 5%, rgba(108, 76, 241, 0.14), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08), transparent 30%),
+    #080b18;
+  color: #f1f0ff;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 6%;
+  background: rgba(15, 18, 38, 0.9);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.18);
+  flex-wrap: wrap;
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #a5a5c2;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  background: #a78bfa;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #c4b5fd;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.notifications-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 65px;
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-btn {
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  background: rgba(139, 92, 246, 0.1);
+  color: #c4b5fd;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 30px;
+  padding: 11px 17px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+.page-heading {
+  margin-bottom: 32px;
+  padding: 30px;
+  background: linear-gradient(
+    120deg,
+    rgba(108, 76, 241, 0.2),
+    rgba(30, 41, 90, 0.35)
+  );
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-heading::after {
+  content: '✦';
+  position: absolute;
+  right: 45px;
+  top: 5px;
+  font-size: 105px;
+  color: rgba(196, 181, 253, 0.07);
+  pointer-events: none;
+}
+
+.eyebrow {
+  color: #a78bfa;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.page-heading h1 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  margin: 0 0 12px;
+  color: #ffffff;
+}
+
+.subtitle {
+  color: #b6b5d0;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================
+   NOTIFICATION ACTIONS
+========================================= */
+
+.notification-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px 18px;
+  color: #aaaac5;
+  background: rgba(25, 29, 58, 0.75);
+  border: 1px solid rgba(139, 92, 246, 0.17);
+  border-radius: 12px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.notification-actions button {
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  background: rgba(139, 92, 246, 0.13);
+  color: #c4b5fd;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 9px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.notification-actions button:hover {
+  background: linear-gradient(135deg, #8b5cf6, #4f46e5);
+  color: #ffffff;
+}
+
+/* =========================================
+   NOTIFICATION LIST
+========================================= */
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Notification Card */
+
+.notification-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  padding: 23px;
+  background: linear-gradient(
+    145deg,
+    rgba(26, 30, 59, 0.96),
+    rgba(15, 19, 40, 0.98)
+  );
+  border: 1px solid rgba(139, 92, 246, 0.17);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.17);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.27);
+}
+
+/* Unread Notification */
+
+.notification-card.unread {
+  background: linear-gradient(
+    120deg,
+    rgba(108, 76, 241, 0.18),
+    rgba(25, 29, 58, 0.98)
+  );
+  border-left: 4px solid #a78bfa;
+}
+
+/* Notification Icon */
+
+.notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  border-radius: 14px;
+  font-size: 22px;
+}
+
+/* Notification Details */
+
+.notification-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-sender {
+  color: #c4b5fd;
+  font-size: 13px;
+  font-weight: 800;
+  margin: 0 0 7px;
+}
+
+.notification-message {
+  color: #e4e2f5;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 2px 0 10px;
+  overflow-wrap: anywhere;
+}
+
+.notification-date {
+  color: #9292b1;
+  font-size: 11px;
+  margin: 0 0 12px;
+}
+
+/* =========================================
+   READ STATUS
+========================================= */
+
+.read-status,
+.unread-status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 6px 11px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+.read-status {
+  background: rgba(148, 163, 184, 0.12);
+  color: #a5b4c8;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.unread-status {
+  background: rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+}
+
+/* =========================================
+   MARK AS READ BUTTON
+========================================= */
+
+.mark-read-btn {
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  background: rgba(139, 92, 246, 0.12);
+  color: #c4b5fd;
+  padding: 10px 13px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.mark-read-btn:hover {
+  background: linear-gradient(135deg, #8b5cf6, #4f46e5);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 76, 241, 0.25);
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state {
+  text-align: center;
+  background: linear-gradient(
+    145deg,
+    rgba(26, 30, 59, 0.96),
+    rgba(15, 19, 40, 0.98)
+  );
+  padding: 55px 25px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.empty-icon {
+  font-size: 52px;
+  margin-bottom: 18px;
+}
+
+.empty-state h2 {
+  font-size: 23px;
+  color: #ffffff;
+  margin: 0 0 13px;
+}
+
+.empty-state p {
+  max-width: 480px;
+  margin: 0 auto 25px;
+  color: #aaaac5;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.empty-state button,
+.error-message button {
+  background: linear-gradient(135deg, #8b5cf6, #4f46e5);
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 19px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.empty-state button:hover,
+.error-message button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(108, 76, 241, 0.3);
+}
+
+/* =========================================
+   LOADING AND ERROR
+========================================= */
+
+.status-message {
+  padding: 32px;
+  text-align: center;
+  color: #c4b5fd;
+  background: rgba(25, 29, 58, 0.95);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.error-message {
+  padding: 27px;
+  text-align: center;
+  color: #fda4af;
+  background: rgba(244, 63, 94, 0.09);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  border-radius: 14px;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.error-message button {
+  display: block;
+  margin: 15px auto 0;
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 17px 4%;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .notifications-container {
+    padding: 32px 20px 50px;
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar {
+    padding: 16px 5%;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .notifications-container {
+    padding: 25px 15px 40px;
+  }
+
+  .page-heading {
+    padding: 25px 20px;
+  }
+
+  .page-heading h1 {
+    font-size: 27px;
+  }
+
+  .page-heading::after {
+    right: 10px;
+    font-size: 75px;
+  }
+
+  .notification-card {
+    flex-wrap: wrap;
+    padding: 17px;
+  }
+
+  .notification-details {
+    flex-basis: calc(100% - 65px);
+  }
+
+  .mark-read-btn {
+    margin-left: 65px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-links {
+    gap: 11px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+  }
+
+  .notification-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-heading h1 {
+    font-size: 24px;
+  }
+
+  .notification-icon {
+    min-width: 42px;
+    height: 42px;
+  }
+}

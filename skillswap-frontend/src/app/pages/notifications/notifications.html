@@ -1,0 +1,159 @@
+<div class="notifications-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="brand">🔄 SkillSwap</div>
+
+    <div class="nav-links">
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/my-profile">My Profile</a>
+      <a routerLink="/find-students">Find Students</a>
+      <a routerLink="/sessions">My Sessions</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="notifications-container">
+
+    <button
+      type="button"
+      class="back-btn"
+      (click)="goBack()">
+      ← Back to Dashboard
+    </button>
+
+    <!-- Heading -->
+    <section class="page-heading">
+      <p class="eyebrow">STAY UPDATED</p>
+
+      <h1>🔔 Notifications</h1>
+
+      <p class="subtitle">
+        Stay updated on your skill exchange activities.
+      </p>
+    </section>
+
+    <!-- Notification Actions -->
+    <div
+      class="notification-actions"
+      *ngIf="notifications.length > 0">
+
+      <span>
+        {{ notifications.length }}
+        notification(s)
+      </span>
+
+      <button
+        type="button"
+        (click)="markAllAsRead()">
+        Mark all as read
+      </button>
+    </div>
+
+    <!-- Loading -->
+    <div
+      class="status-message"
+      *ngIf="loading">
+      Loading notifications...
+    </div>
+
+    <!-- Error -->
+    <div
+      class="error-message"
+      *ngIf="!loading && errorMessage">
+      {{ errorMessage }}
+
+      <button
+        type="button"
+        (click)="loadNotifications()">
+        Try Again
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <section
+      class="empty-state"
+      *ngIf="!loading && !errorMessage && notifications.length === 0">
+
+      <div class="empty-icon">🔔</div>
+
+      <h2>No notifications yet</h2>
+
+      <p>
+        When someone sends you a session request or updates a session,
+        your notifications will appear here.
+      </p>
+
+      <button
+        type="button"
+        (click)="goBack()">
+        Back to Dashboard
+      </button>
+
+    </section>
+
+    <!-- Notification List -->
+    <section
+      class="notification-list"
+      *ngIf="!loading && !errorMessage && notifications.length > 0">
+
+      <article
+        class="notification-card"
+        *ngFor="let notification of notifications"
+        [class.unread]="!notification.read">
+
+        <div class="notification-icon">
+          <span *ngIf="notification.type === 'SESSION_REQUEST'">📩</span>
+          <span *ngIf="notification.type === 'SESSION_ACCEPTED'">✅</span>
+          <span *ngIf="notification.type === 'SESSION_REJECTED'">❌</span>
+          <span *ngIf="notification.type === 'SESSION_COMPLETED'">🎉</span>
+          <span *ngIf="notification.type === 'SESSION_CANCELLED'">⚠️</span>
+          <span *ngIf="
+            notification.type !== 'SESSION_REQUEST' &&
+            notification.type !== 'SESSION_ACCEPTED' &&
+            notification.type !== 'SESSION_REJECTED' &&
+            notification.type !== 'SESSION_COMPLETED' &&
+            notification.type !== 'SESSION_CANCELLED'
+          ">🔔</span>
+        </div>
+
+        <div class="notification-details">
+          <p class="notification-sender" *ngIf="notification.senderName">
+  {{ notification.senderName }}
+</p>
+
+<p class="notification-message">
+  {{ notification.message }}
+</p>
+          <p class="notification-date">
+            {{ notification.createdAt | date:'medium' }}
+          </p>
+
+          <span
+            class="read-status"
+            *ngIf="notification.read">
+            Read
+          </span>
+
+          <span
+            class="unread-status"
+            *ngIf="!notification.read">
+            Unread
+          </span>
+        </div>
+
+        <button
+          type="button"
+          class="mark-read-btn"
+          *ngIf="!notification.read"
+          (click)="markAsRead(notification)">
+          Mark as read
+        </button>
+
+      </article>
+
+    </section>
+
+  </main>
+
+</div>
